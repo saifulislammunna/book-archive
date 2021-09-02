@@ -10,7 +10,7 @@ const searchBook = () => {
     /* clear data */
     searchField.value = '';
      
-    if(searchText == '' ){
+    if(searchText === '' ){
       
       const  emptyText = document.getElementById('empty-text');
       emptyText.innerText = 'Please write something to display';
