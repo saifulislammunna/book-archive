@@ -1,4 +1,5 @@
- 
+document.getElementById('error-message').style.display = 'none';
+
 /* search book function */
 const searchBook = () => {
     const searchField = document.getElementById('search-field');
@@ -6,7 +7,7 @@ const searchBook = () => {
     // console.log(searchText);
     /* clear data */
     searchField.value = '';
-     
+    document.getElementById('error-message').style.display = 'none';
     if(searchText =='' ){
       
 
@@ -20,14 +21,17 @@ const searchBook = () => {
     fetch(url)
     .then(res => res.json())
     .then(data => displaySearchResult(data.docs))
-      
+     .then(error => displayError(error));
 
     }
 
     
 }
  
- 
+const displayError = error => {
+  document.getElementById('error-message').style.display = 'block';
+
+}
 
 /* display result function */
 const displaySearchResult = docs => {
