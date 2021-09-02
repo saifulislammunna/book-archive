@@ -1,4 +1,4 @@
-document.getElementById('error-message').style.display = 'none';
+ 
 const errorMessage = document.getElementById('error-message');
 const  emptyText = document.getElementById('empty-text');
 const resultCount = document.getElementById('result-count');
@@ -9,7 +9,7 @@ const searchBook = () => {
     // console.log(searchText);
     /* clear data */
     searchField.value = '';
-    document.getElementById('error-message').style.display = 'none';
+     
     if(searchText == '' ){
       
       const  emptyText = document.getElementById('empty-text');
@@ -26,17 +26,13 @@ const searchBook = () => {
     fetch(url)
     .then(res => res.json())
     .then(data => displaySearchResult(data,data.docs))
-     .then(error => displayError(error));
+     
 
     }
 
     
 }
- /* error function */
-const displayError = error => {
-  document.getElementById('error-message').style.display = 'block';
-
-}
+ 
 
 /* display result function */
 const displaySearchResult = (data,docs) => {
