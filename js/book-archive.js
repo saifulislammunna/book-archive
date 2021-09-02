@@ -1,5 +1,7 @@
 document.getElementById('error-message').style.display = 'none';
-
+const errorMessage = document.getElementById('error-message');
+const  emptyText = document.getElementById('empty-text');
+const resultCount = document.getElementById('result-count');
 /* search book function */
 const searchBook = () => {
     const searchField = document.getElementById('search-field');
@@ -12,10 +14,11 @@ const searchBook = () => {
       
       const  emptyText = document.getElementById('empty-text');
       emptyText.innerText = 'Please write something to display';
-      // emptyText.textContent = '';
+     
       
     }
     else{
+       emptyText.textContent = '';
       
        /* load data */ 
     const url = `https://openlibrary.org/search.json?q=${searchText}`
@@ -45,8 +48,8 @@ const displaySearchResult = (data,docs) => {
       const errorMessage = document.getElementById('error-message');
       errorMessage.innerText = 'No Result Found';
     }
-     else{
-       
+    else{
+      errorMessage.textContent = '';
       const resultCount = document.getElementById('result-count');
       resultCount.innerHTML = `Total search Results ${data.numFound}`
      }
