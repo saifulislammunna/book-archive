@@ -11,7 +11,17 @@ const searchBook = () => {
     // console.log(url);
     fetch(url)
     .then(res => res.json())
-    .then(data => console.log(data));
+    .then(data => displaySearchResult(data.docs));
 }
-searchBook();
+ 
+/* display result function */
+const displaySearchResult = docs => {
+     
+    const searchResult = document.getElementById('search-result');
+     
+     
+    docs.forEach(doc => {
+        console.log(doc)
+    })
 
+}
