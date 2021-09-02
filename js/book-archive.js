@@ -8,36 +8,48 @@ const searchBook = () => {
     /* clear data */
     searchField.value = '';
     document.getElementById('error-message').style.display = 'none';
-    if(searchText =='' ){
+    if(searchText == '' ){
       
-
-       
+      const  emptyText = document.getElementById('empty-text');
+      emptyText.innerText = 'Please write something to display';
+      // emptyText.textContent = '';
       
     }
     else{
+      
        /* load data */ 
     const url = `https://openlibrary.org/search.json?q=${searchText}`
     // console.log(url);
     fetch(url)
     .then(res => res.json())
-    .then(data => displaySearchResult(data.docs))
+    .then(data => displaySearchResult(data,data.docs))
      .then(error => displayError(error));
 
     }
 
     
 }
- 
+ /* error function */
 const displayError = error => {
   document.getElementById('error-message').style.display = 'block';
 
 }
 
 /* display result function */
-const displaySearchResult = docs => {
+const displaySearchResult = (data,docs) => {
      
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = ''; 
+
+    if(docs.length === 0){
+      const errorMessage = document.getElementById('error-message');
+      errorMessage.innerText = 'No Result Found';
+    }
+     else{
+       
+      const resultCount = document.getElementById('result-count');
+      resultCount.innerHTML = `Total search Results ${data.numFound}`
+     }
      
     docs.forEach(doc => {
         console.log(doc)
@@ -50,7 +62,6 @@ const displaySearchResult = docs => {
           <h1 class="card-title">${doc.title}</h1>
           <p class="card-text"> ${doc.author_name}</p>
           <h2 class="card-text"> ${doc.first_publish_year}</h2>
-
          </div>
       </div>
         
