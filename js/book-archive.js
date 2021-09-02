@@ -47,12 +47,15 @@ const displaySearchResult = (data,docs) => {
     if(docs.length === 0){
       const errorMessage = document.getElementById('error-message');
       errorMessage.innerText = 'No Result Found';
+      resultCount.textContent = '';
     }
     else{
       errorMessage.textContent = '';
       const resultCount = document.getElementById('result-count');
       resultCount.innerHTML = `Total search Results ${data.numFound}`
      }
+     
+     
      
     docs.forEach(doc => {
         console.log(doc)
@@ -74,5 +77,6 @@ const displaySearchResult = (data,docs) => {
 
 
     })
+    
 
 }
