@@ -63,6 +63,7 @@ const displaySearchResult = (data,docs) => {
          <div class="card-body">
           <h1 class="card-title">${doc.title}</h1>
           <p class="card-text"> ${doc.author_name}</p>
+          <p class="card-text"> ${doc.publisher}</p>
           <h2 class="card-text"> ${doc.first_publish_year}</h2>
          </div>
       </div>
